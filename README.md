@@ -121,8 +121,8 @@ Based on the installer-generated config, with the nonguix additions marked. UUID
   (host-name "SURFACE-LAPTOP-2-ON-GUIX")
 
   (users (cons* (user-account
-                  (name "onion")
-                  (comment "Onion")
+                  (name "user")
+                  (comment "User")
                   (group "users")
                   (home-directory "/home/onion")
                   (supplementary-groups '("wheel" "netdev" "audio" "video")))
