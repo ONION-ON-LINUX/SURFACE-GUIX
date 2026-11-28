@@ -45,7 +45,7 @@ In my run there was no substitute for the `linux-7.1.13` derivation, so it compi
 - To grow a VirtualBox VDI: shut the VM down, `VBoxManage modifymedium "<disk>.vdi" --resize 61440`, then inside the guest `parted /dev/sda` → `print` → answer `Fix` when asked about the GPT backup header → `resizepart 3 100%`, then `resize2fs /dev/sda3`.
 - Check the real build log (`zcat /var/log/guix/drvs/xx/<hash>.drv.gz | tail`) instead of trusting Guix's generic "may be low on disk space" hint. Here it was accurate.
 
-### Gotcha: getting the ISO out of the VM
+### Partial issue: getting the ISO out of the VM
 VirtualBox USB passthrough wouldn't attach the stick even with the extension pack installed. What worked instead:
 ```
 # in the VM
@@ -74,7 +74,7 @@ I used the graphical installer with manual partitioning (EFI partition + btrfs r
 1. Edit `/mnt/etc/config.scm` to add the nonfree kernel/firmware (see below).
 2. `guix system init /mnt/etc/config.scm /mnt`
 
-### Gotcha: `install-bootloader.scm` failure
+### IMPORTANT: `install-bootloader.scm` failure
 `guix system init` repeatedly failed at the final step with errors about the bootloader install script. Rebooting the live USB did not fix it. This got past it:
 ```
 guix system init --no-bootloader /mnt/etc/config.scm /mnt
@@ -122,7 +122,7 @@ Based on the installer-generated config, with the nonguix additions marked. UUID
                   (name "user")
                   (comment "User")
                   (group "users")
-                  (home-directory "/home/onion")
+                  (home-directory "/home/user")
                   (supplementary-groups '("wheel" "netdev" "audio" "video")))
                 %base-user-accounts))
 
