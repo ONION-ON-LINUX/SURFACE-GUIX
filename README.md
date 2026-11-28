@@ -155,13 +155,13 @@ Based on the installer-generated config, with the nonguix additions marked. UUID
 ```
 After install, add this to `~/.config/guix/channels.scm` too, so `guix pull` and `guix system reconfigure` can see the `nongnu` modules.
 
-## Other gotchas
+## Other current issues 
 - The live installer's `/gnu/store` is a read-only squashfs plus a RAM overlay. Rebooting resets it.
 - Packages installed with `guix install` aren't on `PATH` until you source `~/.guix-profile/etc/profile`. `sudo` uses root's PATH, so call with a full path if needed.
 - There is no FHS layout: `/bin/bash` and `/bin/sh` don't exist (only `/usr/bin/env` is provided), so scripts with `#!/bin/bash` shebangs need `#!/usr/bin/env bash`.
 - Store hashes are easy to mistype (`l`/`1`/`i` look alike on the Linux console font). Capture paths with `$(...)` instead of retyping them.
 
-## Status: unresolved freeze under X
+## Status: unresolved freeze under X(wayland not tested)
 Installed, booting, wifi working. I then built dwm from source and got it running briefly under X (needed tty permission and `~/.xinitrc` fixes, and disabling i915 PSR/FBC), but the machine **hard-froze the instant dwm rendered**, with no response to any input. I suspect a Surface-specific ACPI/SAM kernel problem and gave up on Guix on this laptop.
 
 For comparison, NixOS with the linux-surface patched kernel (`nixos-hardware`, `microsoft/surface/common`) boots fine on the same machine.
@@ -175,3 +175,10 @@ For comparison, NixOS with the linux-surface patched kernel (`nixos-hardware`, `
 
 ## Installer ISO
 A prebuilt copy of the ISO this process produces is attached to the repo's Releases page (compressed with `xz`, with `SHA256SUMS`). It is not committed to the repo itself.
+
+
+## Please Experiment!
+i'd love to hear what you all experience and have experimented with!
+
+
+Not associated or condoned with Microsoft or the GNU guix team
