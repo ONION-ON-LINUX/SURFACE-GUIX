@@ -41,7 +41,7 @@ guix system image --image-type=iso9660 ~/src/nonguix/nongnu/system/install.scm
 
 Alternative: SystemCrafters publishes prebuilt nonguix installer ISOs (github.com/SystemCrafters/guix-installer). I built my own, but that would likely have skipped the next problem.
 
-### Gotcha: the kernel compiles locally and eats disk
+### Issue: the kernel compiles locally and eats disk
 In my run there was no substitute for the `linux-7.1.13` derivation, so it compiled from source in the VM (about 3 hours on 4 cores). It died twice with `No space left on device` (log lines from `ld`/`objcopy` on DVB driver modules). The nonguix kernel builds a very large module set.
 - Give the VM **60 GB+** of disk before starting, not 32.
 - To grow a VirtualBox VDI: shut the VM down, `VBoxManage modifymedium "<disk>.vdi" --resize 61440`, then inside the guest `parted /dev/sda` → `print` → answer `Fix` when asked about the GPT backup header → `resizepart 3 100%`, then `resize2fs /dev/sda3`.
@@ -118,7 +118,7 @@ Based on the installer-generated config, with the nonguix additions marked. UUID
   (locale "en_US.utf8")
   (timezone "America/Los_Angeles")
   (keyboard-layout (keyboard-layout "us"))
-  (host-name "SURFACE-LAPTOP-2-ON-GUIX")
+  (host-name "")
 
   (users (cons* (user-account
                   (name "user")
