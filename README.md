@@ -10,7 +10,7 @@ I couldn't find another write-up of Guix on a Surface, so this may be useful to 
 ## Hardware
 - Surface Laptop 2, i7-8650U, 16 GB RAM, NVMe
 - Wifi: Marvell mwifiex (PCIe), needs non-free firmware
-- Build host: a VirtualBox VM running Guix (the Surface's old OS was wiped during install)
+- Build host: a VirtualBox VM running Guix (to build iso then you can install bare metal)
 
 ## Overview
 1. Install Guix in a VM.
