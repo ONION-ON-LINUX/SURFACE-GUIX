@@ -39,8 +39,6 @@ git clone https://gitlab.com/nonguix/nonguix.git ~/src/nonguix
 guix system image --image-type=iso9660 ~/src/nonguix/nongnu/system/install.scm
 ```
 
-Alternative: SystemCrafters publishes prebuilt nonguix installer ISOs (github.com/SystemCrafters/guix-installer). I built my own, but that would likely have skipped the next problem.
-
 ### Issue: the kernel compiles locally and eats disk
 In my run there was no substitute for the `linux-7.1.13` derivation, so it compiled from source in the VM (about 3 hours on 4 cores). It died twice with `No space left on device` (log lines from `ld`/`objcopy` on DVB driver modules). The nonguix kernel builds a very large module set.
 - Give the VM **60 GB+** of disk before starting, not 32.
